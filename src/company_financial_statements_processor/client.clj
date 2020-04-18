@@ -46,17 +46,17 @@
        :symbol symbol
        :financials 
         (loop [i 0
-               metrics {}]
+               metrics (transient [])]
           (if (< i totalYears)
             (recur (inc i)
-                   (conj metrics
-                         {:date (get (get incomeFinancialMetrics i) "date")
-                          :revenue (get (get incomeFinancialMetrics i) "Revenue")
-                          :eps (get (get incomeFinancialMetrics i) "EPS")
-                          :fcf (get (get cashFlowFinancialMetrics i) "Free Cash Flow")
-                          :equity (get (get balanceSheetFinancialMetrics i) "Total shareholders equity")}
-                   ))
-            metrics
+                   (conj! metrics
+                          {:date (get (get incomeFinancialMetrics i) "date")
+                           :revenue (get (get incomeFinancialMetrics i) "Revenue")
+                           :eps (get (get incomeFinancialMetrics i) "EPS")
+                           :fcf (get (get cashFlowFinancialMetrics i) "Free Cash Flow")
+                           :equity (get (get balanceSheetFinancialMetrics i) "Total shareholders equity")}
+                    ))
+            (persistent! metrics)
             ))
        }
       )
