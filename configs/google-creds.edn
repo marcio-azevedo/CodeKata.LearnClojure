@@ -1,0 +1,7 @@
+{:client-id "YOUR CLIENT ID"
+ :client-secret "YOUR CLIENT SECRET"
+ :redirect-uris ["URI 1" "URI 2"]
+ :auth-map {:access-token "YOUR ACCESS TOKEN"
+            :expires-in 1234
+            :refresh-token "YOUR REFRESH TOKEN"
+            :token-type "Bearer"}}

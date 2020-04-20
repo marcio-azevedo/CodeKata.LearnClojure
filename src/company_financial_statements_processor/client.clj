@@ -7,7 +7,6 @@
   (def incomeStatementApi "https://financialmodelingprep.com/api/v3/financials/income-statement/")
   (def balanceSheetStatementApi "https://financialmodelingprep.com/api/v3/financials/balance-sheet-statement/")
   (def cashFlowStatementApi "https://financialmodelingprep.com/api/v3/financials/cash-flow-statement/")
-  (def gSpreadsheetApi "https://sheets.googleapis.com/v4/spreadsheets/")
 
   ; get Company Income Statement financial metrics
   (defn getCompanyIncomeStatementMetrics [symbol]
@@ -60,17 +59,6 @@
             (persistent! metrics)
             ))
        }
-      )
-    )
-
-  ; https://sheets.googleapis.com/v4/spreadsheets/{spreadsheetId}/values/{range}
-  (defn updateSpreadsheetWithFinancials [metrics spreadsheetId]
-    (let [symbol (:symbol metrics)
-          financials (:financials metrics)
-          totalYears (count financials)
-          url (str gSpreadsheetApi spreadsheetId)
-          ]
-      ;((client/put url {:body "my PUT body"}))
       )
     )
 
